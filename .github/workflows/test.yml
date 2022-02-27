@@ -1,5 +1,9 @@
 name: Run Tests
-on: [push]
+
+on:
+  push:
+  repository_dispatch:
+
 jobs:
   build:
     name: Test
@@ -15,4 +19,7 @@ jobs:
       - uses: onbjerg/foundry-toolchain@v1
         with:
           version: nightly
-      - run: forge test
+      - name: Compile the contracts
+        run: yarn build
+      - name: Run tests
+        run: forge test
