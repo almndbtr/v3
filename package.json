@@ -37,6 +37,6 @@
     "prepare": "husky install",
     "prepublishOnly": "rm -rf ./dist && forge clean && forge build && yarn typechain && cp -R contracts dist && cp -R addresses dist",
     "test": "forge test",
-    "typechain": "typechain --target=ethers-v5 'dist/artifacts/*/*.json' --out-dir dist/typechain"
+    "typechain": "typechain --target=ethers-v5 'dist/artifacts/*/*.json' --out-dir dist/typechain --show-stack-traces"
   }
 }
