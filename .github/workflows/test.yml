@@ -19,7 +19,10 @@ jobs:
       - uses: onbjerg/foundry-toolchain@v1
         with:
           version: nightly
-      - name: Compile the contracts
-        run: yarn build
+
+      # Rather than using `yarn build`, split these commands into their own step.
+      - run: forge build
+      - run: yarn typechain
+
       - name: Run tests
         run: forge test
